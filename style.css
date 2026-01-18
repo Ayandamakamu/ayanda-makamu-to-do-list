@@ -13,16 +13,19 @@ body {
   background: linear-gradient(135deg, #5570f8, #f65374); 
 }
 
+@media (max-width: 500px) {
 h1 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
+  font-size: 1.5rem;
   letter-spacing: 2px;
+}
 }
 
 .todo-container {
   background: rgba(255, 255, 255, 0.15); 
   backdrop-filter: blur(12px);
-  padding: 30px 35px;
+  padding: 25px 20px;
   border-radius: 25px; 
   box-shadow: 0 12px 25px rgba(0,0,0,0.25);
   width: 360px;
@@ -40,10 +43,13 @@ h1 {
 
 }
 
+@media (max-width: 500px) {
 .input-container {
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  gap: 10px;
   margin-bottom: 25px;
+}
 }
 
 #task-input {
@@ -56,6 +62,7 @@ h1 {
   background: rgba(255,255,255,0.3);
   color: #fff;
   backdrop-filter: blur(5px);
+  font-size: 0.95rem;
 }
 
 #task-input::placeholder {
@@ -65,6 +72,7 @@ h1 {
 #add-btn {
   padding: 12px 25px;
   border: none;
+  width: 100%;
   border-radius: 25px; 
  background: linear-gradient(135deg, #b7a9ee, #ac43e4);
   color: #fff;
@@ -93,17 +101,22 @@ box-shadow: 0 6px 12px rgba(0,0,0,0.2), 0 0 12px rgba(0,255,255,0.2);
   gap: 12px;
 }
 
+@media (max-width: 500px) {
 .task-item {
+ flex-direction: column;
    background: linear-gradient(135deg, #2a2c7a, #1e215f);
   color: #fff;
   padding: 12px 18px;
   border-radius: 25px; 
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+    gap: 5px;
   cursor: pointer;
+  font-size: 0.95rem;
   box-shadow: 0 6px 12px rgba(0,0,0,0.25), 0 2px 6px rgba(255,255,255,0.05);
   transition: transform 0.15s, background 0.2s;
+}
 }
 
 .task-item:hover {
@@ -128,6 +141,7 @@ box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   cursor: pointer;
   font-size: 0.85rem;
   transition: background 0.2s, transform 0.15s;
+  align-self: flex-end;
 }
 
 .delete-btn:hover {
