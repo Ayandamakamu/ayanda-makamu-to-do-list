@@ -5,3 +5,7 @@ function addTask() {
   const li = document.createElement('li');
   li.className = 'task-item';
   li.textContent = taskText;
+
+   li.addEventListener('click', () => {
+    li.classList.toggle('completed');
+  });
