@@ -28,3 +28,12 @@ body {
   gap: 10px;
   margin-bottom: 20px;
 }
+
+#task-input {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
