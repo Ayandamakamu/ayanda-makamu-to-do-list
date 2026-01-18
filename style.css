@@ -156,9 +156,6 @@ body {
     align-self: flex-end;
   }
 
-  h1 {
-    font-size: 1.5rem;
-  }
 
   #task-input,
   .task-item {
