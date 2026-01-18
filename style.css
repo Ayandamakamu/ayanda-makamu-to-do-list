@@ -42,7 +42,7 @@ body {
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(135deg, #4facfe, #00f2fe); /* playful gradient button */
+  background: linear-gradient(135deg, #4facfe, #00f2fe); 
   color: #fff;
   font-weight: bold;
   cursor: pointer;
@@ -59,7 +59,7 @@ body {
 }
 
 .task-item {
-  background: #1e2a78; /* dark bluish color */
+  background: #1e2a78; 
   color: #fff;
   padding: 10px 15px;
   margin-bottom: 10px;
@@ -93,5 +93,5 @@ body {
 }
 
 .delete-btn:hover {
-  background: #ff1f3b;
+  background: #643bed;
 }
