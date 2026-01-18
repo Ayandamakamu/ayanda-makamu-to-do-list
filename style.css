@@ -19,9 +19,6 @@ h1 {
   letter-spacing: 2px;
 }
 
-
-
-
 .todo-container {
   background: rgba(255, 255, 255, 0.15); 
   backdrop-filter: blur(12px);
@@ -122,7 +119,7 @@ box-shadow: 0 6px 12px rgba(0,0,0,0.2), 0 0 12px rgba(0,255,255,0.2);
 }
 
 .delete-btn {
-background: linear-gradient(135deg, #b346ff, #8b2cff);
+background: linear-gradient(135deg, #6b19d7, #8b2cff);
 box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   border: none;
  border-radius: 15px;
