@@ -74,3 +74,9 @@ body {
 .task-item:hover {
   background: #3a44a8;
 }
+
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
