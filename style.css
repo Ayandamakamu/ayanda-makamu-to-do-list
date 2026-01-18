@@ -111,14 +111,15 @@ body {
 .delete-btn {
   background: #9f25eb;
   border: none;
-  border-radius: 8px;
+ border-radius: 15px;
   color: #fff;
-  padding: 5px 10px;
+  padding: 6px 12px;
   cursor: pointer;
-  font-size: 0.8rem;
-  transition: background 0.2s;
+  font-size: 0.85rem;
+  transition: background 0.2s, transform 0.15s;
 }
 
 .delete-btn:hover {
   background: #643bed;
+   transform: scale(1.05);
 }
