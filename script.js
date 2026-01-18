@@ -17,3 +17,9 @@ function addTask() {
     e.stopPropagation(); // prevents toggling completed when deleting
     taskList.removeChild(li);
   });
+
+   li.appendChild(deleteBtn);
+  taskList.appendChild(li);
+
+   taskInput.value = '';
+}
