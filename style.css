@@ -17,9 +17,14 @@ body {
   text-align: center;
 }
 
-
 .todo-container h1 {
   color: #fff;
   margin-bottom: 20px;
   font-size: 1.8rem;
+}
+
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
 }
