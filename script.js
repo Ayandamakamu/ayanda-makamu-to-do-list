@@ -9,3 +9,11 @@ function addTask() {
    li.addEventListener('click', () => {
     li.classList.toggle('completed');
   });
+
+    const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = 'Delete';
+  deleteBtn.className = 'delete-btn';
+  deleteBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // prevents toggling completed when deleting
+    taskList.removeChild(li);
+  });
