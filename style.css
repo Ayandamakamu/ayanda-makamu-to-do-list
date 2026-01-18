@@ -110,7 +110,7 @@ body {
 
 
 .delete-btn {
-  background: linear-gradient(135deg, #b346ff, #8b2cff);
+  background: linear-gradient(135deg, #bd85e4, #6d5fed);
   border: none;
   border-radius: 15px;
   color: #fff;
@@ -122,7 +122,7 @@ body {
 }
 
 .delete-btn:hover {
-  background: linear-gradient(135deg, #d36bff, #aa3eff);
+  background: linear-gradient(135deg, #c183db, #aa3eff);
   transform: scale(1.05);
   box-shadow: 0 6px 14px rgba(0,0,0,0.3);
 }
