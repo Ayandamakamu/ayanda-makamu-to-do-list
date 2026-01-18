@@ -14,13 +14,17 @@ body {
   background: linear-gradient(135deg, #f0adef, #8a2be2); 
 }
 
-.h1 {
-  font-family: 'Baloo 2', cursive;
-  font-size: 48px;
-  font-weight: 700;
+.todo-container h1 {
+  font-family: 'Baloo 2', cursive; /* 👈 THIS WAS MISSING */
   color: #ffffff;
+  margin-bottom: 25px;
+  font-size: 48px;
   letter-spacing: 0.5px;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-weight: 700;
+
+  text-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    0 0 14px rgba(255, 255, 255, 0.35);
 }
 
 .todo-container {
