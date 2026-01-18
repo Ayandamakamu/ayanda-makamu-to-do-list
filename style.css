@@ -26,8 +26,9 @@ body {
 
 .todo-container h1 {
   color: #fff;
-  margin-bottom: 20px;
-  font-size: 1.8rem;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  letter-spacing: 1px;
 }
 
 .input-container {
