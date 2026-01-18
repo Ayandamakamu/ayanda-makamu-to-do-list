@@ -16,3 +16,10 @@ body {
   max-width: 90%;
   text-align: center;
 }
+
+
+.todo-container h1 {
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
