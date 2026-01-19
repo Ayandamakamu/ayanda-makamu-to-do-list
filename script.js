@@ -1,23 +1,72 @@
 const taskInput = document.getElementById('task-input');
+const reminderInput = document.getElementById('reminder-input');
 const addBtn = document.getElementById('add-btn');
 const taskList = document.getElementById('task-list');
 
-// Load saved tasks on page load
-document.addEventListener('DOMContentLoaded', loadTasks);
+let tasks = [];
 
-function addTask(taskText = null, completed = false) {
-  const text = taskText || taskInput.value.trim();
+/* ---------------- NOTIFICATIONS ---------------- */
+
+if ('Notification' in window && Notification.permission !== 'granted') {
+  Notification.requestPermission();
+}
+
+/* ---------------- LOAD TASKS ---------------- */
+
+document.addEventListener('DOMContentLoaded', () => {
+  const saved = JSON.parse(localStorage.getItem('tasks')) || [];
+  tasks = saved;
+
+  tasks.forEach(task => {
+    renderTask(task);
+    if (task.reminderTime) {
+      scheduleReminder(task);
+    }
+  });
+});
+
+/* ---------------- ADD TASK ---------------- */
+
+function addTask() {
+  const text = taskInput.value.trim();
+  const reminderTime = reminderInput.value || null;
+
   if (text === '') return;
 
+  const task = {
+    id: Date.now(),
+    text,
+    completed: false,
+    reminderTime,
+    reminded: false
+  };
+
+  tasks.push(task);
+  saveTasks();
+  renderTask(task);
+
+  if (reminderTime) {
+    scheduleReminder(task);
+  }
+
+  taskInput.value = '';
+  reminderInput.value = '';
+}
+
+/* ---------------- RENDER TASK ---------------- */
+
+function renderTask(task) {
   const li = document.createElement('li');
   li.className = 'task-item';
-  li.textContent = text;
+  li.dataset.id = task.id;
+  li.textContent = task.text;
 
-  if (completed) {
+  if (task.completed) {
     li.classList.add('completed');
   }
 
   li.addEventListener('click', () => {
+    task.completed = !task.completed;
     li.classList.toggle('completed');
     saveTasks();
   });
@@ -28,41 +77,44 @@ function addTask(taskText = null, completed = false) {
 
   deleteBtn.addEventListener('click', (e) => {
     e.stopPropagation();
+    tasks = tasks.filter(t => t.id !== task.id);
     li.remove();
     saveTasks();
   });
 
   li.appendChild(deleteBtn);
   taskList.appendChild(li);
-
-  taskInput.value = '';
-  saveTasks();
 }
 
-// Save tasks to localStorage
+/* ---------------- SAVE TASKS ---------------- */
+
 function saveTasks() {
-  const tasks = [];
-
-  document.querySelectorAll('.task-item').forEach(task => {
-    tasks.push({
-      text: task.firstChild.textContent,
-      completed: task.classList.contains('completed')
-    });
-  });
-
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-// Load tasks from localStorage
-function loadTasks() {
-  const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+/* ---------------- REMINDERS ---------------- */
 
-  savedTasks.forEach(task => {
-    addTask(task.text, task.completed);
-  });
+function scheduleReminder(task) {
+  const reminderDate = new Date(task.reminderTime);
+  const timeUntil = reminderDate.getTime() - Date.now();
+
+  if (timeUntil <= 0 || task.reminded) return;
+
+  setTimeout(() => {
+    if (Notification.permission === 'granted') {
+      new Notification('⏰ Task Reminder', {
+        body: task.text
+      });
+
+      task.reminded = true;
+      saveTasks();
+    }
+  }, timeUntil);
 }
 
-addBtn.addEventListener('click', () => addTask());
+/* ---------------- EVENTS ---------------- */
+
+addBtn.addEventListener('click', addTask);
 
 taskInput.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') addTask();
